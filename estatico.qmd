@@ -1,0 +1,8 @@
+---
+title: "Estático"
+format: html
+---
+
+```{r}
+print("hola")
+```
