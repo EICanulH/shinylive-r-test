@@ -1,0 +1,176 @@
+---
+title: "shinyapp más compleja"
+format: html
+filters:
+  - shinylive
+---
+
+```{shinylive-r}
+#| standalone: true
+#| viewerHeight: 800
+
+# Cargar las librerías necesarias
+library(shiny)      # Permite crear aplicaciones web interactivas
+library(ggplot2)    # Permite crear gráficas
+library(DT)         # Permite crear tablas interactivas
+
+####
+# DATOS
+####
+
+# Utilizar el conjunto de datos mtcars que ya viene incluido en R
+datos <- mtcars
+
+
+####
+# UI (Interfaz de usuario)
+####
+
+# fluidPage crea la estructura general de la aplicación
+ui <- fluidPage(
+  
+  # Título principal de la aplicación
+  titlePanel("Explorador interactivo de autos"),
+  
+  # Divide la pantalla en dos partes:
+  # sidebarPanel = controles
+  # mainPanel = resultados
+  sidebarLayout(
+    
+    # Panel lateral donde estarán los controles
+    sidebarPanel(
+      
+      # Permite seleccionar la variable que se utilizará en el eje X de la gráfica
+      selectInput("xvar", "Seleccione eje x:", choices = names(datos), selected = "wt"),
+      
+      # Permite seleccionar la variable que se utilizaráen el eje Y de la gráfica
+      selectInput("yvar", "Seleccione eje y:", choices = names(datos), selected = "wt"),
+      
+      # Control deslizante para modificar el tamaño de los puntos de la gráfica
+      sliderInput("size", "Tamaño del punto:", min = 1, max = 10, value = 5),
+      
+      # Control deslizante para modificar la transparencia de los puntos
+      sliderInput("alpha", "Transparencia:", min = 0.2, max = 1, value = 0.8),
+      
+      # Permite seleccionar cómo se colorearán los puntos
+      # "none" significa que no habrá grupos de color
+      # "cyl" agrupa por número de cilindros
+      # "am" agrupa por tipo de transmisión
+      selectInput("color", "Color grupo: ", choices = c("Ninguno" = "none", "Cilindros" = "cyl", "Transmisiones" = "am"), selected = "cyl"),
+      
+      # Casilla para decidir si se muestra o no una línea de tendencia
+      checkboxInput("smooth", "Agregar linea de tendencia", value = TRUE),
+      
+      # Botón que permite regresar los controles a sus valores iniciales
+      actionButton("reset", "Reset")
+      
+      ),
+    
+    # Panel principal donde se muestran los resultados
+    mainPanel(
+      #gráfica, click = "plot_click" permite detectar cuando el usuario hace clic sobre la gráfica
+      plotOutput("mtcars_scatter", height = 300, click = "plot_click"),
+      # Título en negritas para la sección de información del punto seleccionado
+      strong("detalle de punto"),
+      # Espacio donde se mostrará la información del punto seleccionado
+      verbatimTextOutput("info"),
+      # Línea horizontal para separar visualmente las secciones
+      hr(),
+      #tabla interactiva
+      DT::dataTableOutput("tabla")
+    )
+  )
+)
+
+####
+# SERVER
+####
+
+# server contiene la lógica de la aplicación.
+# Aquí se define qué ocurre cuando el usuario interactúa con los controles.
+server <- function(input, output, session){
+  
+  # reactive() crea un objeto reactivo. Se vuelve a ejecutar cuando cambia alguna entrada que se utilice dentro de él.
+  datos <- reactive({
+    # Crear una copia de mtcars
+    df <- mtcars
+    # Crear una nueva columna llamada "car" utilizando los nombres de las filas
+    df$car <- rownames(df)
+    # Convertir cyl en una variable categórica
+    df$cyl <- factor(df$cyl)
+    # Convertir am en factor y cambiar sus etiquetas:0 = Automática, 1 = Manual
+    df$am <- factor(df$am, labels = c("Automatica", "Manual"))
+    # Regresar el dataframe preparado
+    df
+  })
+  
+  
+  # Crear otro objeto reactivo para construir la gráfica
+  grafica <- reactive({
+    # Verificar que el usuario haya seleccionado una variable para X y otra para Y
+    req(input$xvar, input$yvar)
+    # Crear la gráfica base utilizando las variables seleccionadas por el usuario
+    p_base <- ggplot(datos(), aes_string(x = input$xvar, y = input$yvar))
+    
+    # Si el usuario seleccionó "Ninguno" no se utiliza ningún color por grupo
+    if(input$color == "none"){
+      p <- p_base + geom_point(size = input$size, alpha = input$alpha)
+    } else {# Si seleccionó un grupo, se utiliza esa variable para asignar diferentes colores a los puntos
+      p <- ggplot( datos(), aes_string(x = input$xvar, y = input$yvar, color = input$color)) +
+        geom_point(size = input$size, alpha = input$alpha) +labs(color = "Grupo")
+    }
+    
+    # Comprobar si está activada la opción"Agregar linea de tendencia"
+    if(isTRUE(input$smooth)){
+      # Agregar una línea de tendencia LOESS, se = FALSE evita mostrar el intervalo de confianza
+      p <- p + geom_smooth(se = FALSE, method = "loess")
+    }
+    # Regresar la gráfica final
+    p
+  })
+
+  # Mostrar la gráfica en el elemento "mtcars_scatter" definido en el UI
+  output$mtcars_scatter <- renderPlot({
+    validate( #agrega condicion sobre las
+      need(input$xvar != input$yvar, "Elije variables distintas")
+    )
+    grafica()
+    })
+  
+  # Crear la tabla interactiva
+  output$tabla <- DT::renderDataTable({
+    DT::datatable(datos(), options = list(pageLength = 5), rownames = FALSE)
+  })
+  
+  # Detecta cuando el usuario presiona el botón "Reset" y actualiza los valores de los inputs
+  observeEvent(input$reset,{
+    updateSelectInput(session, "xvar", selected="wt")
+    updateSelectInput(session, "yvar", selected="mpg")
+    updateSelectInput(session, "color", selected="cyl")
+    updateSliderInput(session, "size", value=3)
+    updateSliderInput(session, "alpha", value=0.8)
+    updateCheckboxInput(session, "smooth", value=TRUE)
+  })
+  
+  # Genera el texto que se mostrará en "info"
+  output$info <-renderPrint({
+    # Verifica si el usuario todavía no ha hecho clic en la gráfica
+    if(is.null(input$plot_click)){
+      cat("Haz click sobre un punto para ver detalle")
+    } else{ # Busca el punto más cercano al lugar donde hizo clic el usuario
+      punto <- nearPoints(datos(), input$plot_click,xvar= input$xvar, yvar= input$yvar, maxpoints = 1)
+      if (nrow(punto)==0){ # Verifica si no se encontró ningún punto cercano
+        cat("Acercate a un punto")
+      } else{ #Si si se selecciono un punto muestra su info
+        print(punto[, c("car", input$xvar, input$yvar, "cyl", "am")])
+      }
+    }
+  })
+  
+}
+####
+# SHINY
+####
+# conecta la interfaz (ui) con la lógica (server)
+shinyApp(ui, server)
+```

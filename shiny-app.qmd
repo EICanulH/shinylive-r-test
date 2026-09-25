@@ -7,7 +7,7 @@ filters:
 
 ```{shinylive-r}
 #| standalone: true
-#| viewerHeight: 600
+#| viewerHeight: 800
 
 library(shiny)
 

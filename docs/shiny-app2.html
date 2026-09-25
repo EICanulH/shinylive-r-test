@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>3&nbsp; shinyapp – Shinylive test</title>
+<title>4&nbsp; shinyapp más compleja – Shinylive test</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -36,8 +36,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./shiny-app2.html" rel="next">
-<link href="./estatico.html" rel="prev">
+<link href="./shiny-app.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -47,7 +46,7 @@ ul.task-list li input[type="checkbox"] {
 <link href="site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-ed1dd126299ed36077d375b8a45118e7.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-ef405b898ec2f5ec395f2c72a69f11e0.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <meta name="shinylive:serviceworker_dir" content=".">
 <script src="site_libs/quarto-contrib/shinylive-0.10.12/shinylive/load-shinylive-sw.js" type="module"></script>
 <script src="site_libs/quarto-contrib/shinylive-0.10.12/shinylive/run-python-blocks.js" type="module"></script>
@@ -93,7 +92,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./shiny-app.html"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">shinyapp</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./shiny-app2.html"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">shinyapp más compleja</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -132,13 +131,13 @@ ul.task-list li input[type="checkbox"] {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./shiny-app.html" class="sidebar-item-text sidebar-link active">
+  <a href="./shiny-app.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">shinyapp</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./shiny-app2.html" class="sidebar-item-text sidebar-link">
+  <a href="./shiny-app2.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">shinyapp más compleja</span></span></a>
   </div>
 </li>
@@ -153,7 +152,7 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">shinyapp</span></h1>
+<h1 class="title"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">shinyapp más compleja</span></h1>
 </div>
 
 
@@ -176,48 +175,170 @@ ul.task-list li input[type="checkbox"] {
 #| standalone: true
 #| viewerHeight: 800
 
-library(shiny)
+# Cargar las librerías necesarias
+library(shiny)      # Permite crear aplicaciones web interactivas
+library(ggplot2)    # Permite crear gráficas
+library(DT)         # Permite crear tablas interactivas
 
-# Define UI for application that draws a histogram
+####
+# DATOS
+####
+
+# Utilizar el conjunto de datos mtcars que ya viene incluido en R
+datos &lt;- mtcars
+
+
+####
+# UI (Interfaz de usuario)
+####
+
+# fluidPage crea la estructura general de la aplicación
 ui &lt;- fluidPage(
-
-    # Application title
-    titlePanel("Old Faithful Geyser Data"),
-
-    # Sidebar with a slider input for number of bins 
-    sidebarLayout(
-        sidebarPanel(
-            sliderInput("bins",
-                        "Number of bins:",
-                        min = 1,
-                        max = 50,
-                        value = 30)
-        ),
-
-        # Show a plot of the generated distribution
-        mainPanel(
-           plotOutput("distPlot")
-        )
+  
+  # Título principal de la aplicación
+  titlePanel("Explorador interactivo de autos"),
+  
+  # Divide la pantalla en dos partes:
+  # sidebarPanel = controles
+  # mainPanel = resultados
+  sidebarLayout(
+    
+    # Panel lateral donde estarán los controles
+    sidebarPanel(
+      
+      # Permite seleccionar la variable que se utilizará en el eje X de la gráfica
+      selectInput("xvar", "Seleccione eje x:", choices = names(datos), selected = "wt"),
+      
+      # Permite seleccionar la variable que se utilizaráen el eje Y de la gráfica
+      selectInput("yvar", "Seleccione eje y:", choices = names(datos), selected = "wt"),
+      
+      # Control deslizante para modificar el tamaño de los puntos de la gráfica
+      sliderInput("size", "Tamaño del punto:", min = 1, max = 10, value = 5),
+      
+      # Control deslizante para modificar la transparencia de los puntos
+      sliderInput("alpha", "Transparencia:", min = 0.2, max = 1, value = 0.8),
+      
+      # Permite seleccionar cómo se colorearán los puntos
+      # "none" significa que no habrá grupos de color
+      # "cyl" agrupa por número de cilindros
+      # "am" agrupa por tipo de transmisión
+      selectInput("color", "Color grupo: ", choices = c("Ninguno" = "none", "Cilindros" = "cyl", "Transmisiones" = "am"), selected = "cyl"),
+      
+      # Casilla para decidir si se muestra o no una línea de tendencia
+      checkboxInput("smooth", "Agregar linea de tendencia", value = TRUE),
+      
+      # Botón que permite regresar los controles a sus valores iniciales
+      actionButton("reset", "Reset")
+      
+      ),
+    
+    # Panel principal donde se muestran los resultados
+    mainPanel(
+      #gráfica, click = "plot_click" permite detectar cuando el usuario hace clic sobre la gráfica
+      plotOutput("mtcars_scatter", height = 300, click = "plot_click"),
+      # Título en negritas para la sección de información del punto seleccionado
+      strong("detalle de punto"),
+      # Espacio donde se mostrará la información del punto seleccionado
+      verbatimTextOutput("info"),
+      # Línea horizontal para separar visualmente las secciones
+      hr(),
+      #tabla interactiva
+      DT::dataTableOutput("tabla")
     )
+  )
 )
 
-# Define server logic required to draw a histogram
-server &lt;- function(input, output) {
+####
+# SERVER
+####
 
-    output$distPlot &lt;- renderPlot({
-        # generate bins based on input$bins from ui.R
-        x    &lt;- faithful[, 2]
-        bins &lt;- seq(min(x), max(x), length.out = input$bins + 1)
+# server contiene la lógica de la aplicación.
+# Aquí se define qué ocurre cuando el usuario interactúa con los controles.
+server &lt;- function(input, output, session){
+  
+  # reactive() crea un objeto reactivo. Se vuelve a ejecutar cuando cambia alguna entrada que se utilice dentro de él.
+  datos &lt;- reactive({
+    # Crear una copia de mtcars
+    df &lt;- mtcars
+    # Crear una nueva columna llamada "car" utilizando los nombres de las filas
+    df$car &lt;- rownames(df)
+    # Convertir cyl en una variable categórica
+    df$cyl &lt;- factor(df$cyl)
+    # Convertir am en factor y cambiar sus etiquetas:0 = Automática, 1 = Manual
+    df$am &lt;- factor(df$am, labels = c("Automatica", "Manual"))
+    # Regresar el dataframe preparado
+    df
+  })
+  
+  
+  # Crear otro objeto reactivo para construir la gráfica
+  grafica &lt;- reactive({
+    # Verificar que el usuario haya seleccionado una variable para X y otra para Y
+    req(input$xvar, input$yvar)
+    # Crear la gráfica base utilizando las variables seleccionadas por el usuario
+    p_base &lt;- ggplot(datos(), aes_string(x = input$xvar, y = input$yvar))
+    
+    # Si el usuario seleccionó "Ninguno" no se utiliza ningún color por grupo
+    if(input$color == "none"){
+      p &lt;- p_base + geom_point(size = input$size, alpha = input$alpha)
+    } else {# Si seleccionó un grupo, se utiliza esa variable para asignar diferentes colores a los puntos
+      p &lt;- ggplot( datos(), aes_string(x = input$xvar, y = input$yvar, color = input$color)) +
+        geom_point(size = input$size, alpha = input$alpha) +labs(color = "Grupo")
+    }
+    
+    # Comprobar si está activada la opción"Agregar linea de tendencia"
+    if(isTRUE(input$smooth)){
+      # Agregar una línea de tendencia LOESS, se = FALSE evita mostrar el intervalo de confianza
+      p &lt;- p + geom_smooth(se = FALSE, method = "loess")
+    }
+    # Regresar la gráfica final
+    p
+  })
 
-        # draw the histogram with the specified number of bins
-        hist(x, breaks = bins, col = 'darkgray', border = 'white',
-             xlab = 'Waiting time to next eruption (in mins)',
-             main = 'Histogram of waiting times')
+  # Mostrar la gráfica en el elemento "mtcars_scatter" definido en el UI
+  output$mtcars_scatter &lt;- renderPlot({
+    validate( #agrega condicion sobre las
+      need(input$xvar != input$yvar, "Elije variables distintas")
+    )
+    grafica()
     })
+  
+  # Crear la tabla interactiva
+  output$tabla &lt;- DT::renderDataTable({
+    DT::datatable(datos(), options = list(pageLength = 5), rownames = FALSE)
+  })
+  
+  # Detecta cuando el usuario presiona el botón "Reset" y actualiza los valores de los inputs
+  observeEvent(input$reset,{
+    updateSelectInput(session, "xvar", selected="wt")
+    updateSelectInput(session, "yvar", selected="mpg")
+    updateSelectInput(session, "color", selected="cyl")
+    updateSliderInput(session, "size", value=3)
+    updateSliderInput(session, "alpha", value=0.8)
+    updateCheckboxInput(session, "smooth", value=TRUE)
+  })
+  
+  # Genera el texto que se mostrará en "info"
+  output$info &lt;-renderPrint({
+    # Verifica si el usuario todavía no ha hecho clic en la gráfica
+    if(is.null(input$plot_click)){
+      cat("Haz click sobre un punto para ver detalle")
+    } else{ # Busca el punto más cercano al lugar donde hizo clic el usuario
+      punto &lt;- nearPoints(datos(), input$plot_click,xvar= input$xvar, yvar= input$yvar, maxpoints = 1)
+      if (nrow(punto)==0){ # Verifica si no se encontró ningún punto cercano
+        cat("Acercate a un punto")
+      } else{ #Si si se selecciono un punto muestra su info
+        print(punto[, c("car", input$xvar, input$yvar, "cyl", "am")])
+      }
+    }
+  })
+  
 }
-
-# Run the application 
-shinyApp(ui = ui, server = server)</code></pre>
+####
+# SHINY
+####
+# conecta la interfaz (ui) con la lógica (server)
+shinyApp(ui, server)</code></pre>
 
 
 
@@ -624,14 +745,11 @@ shinyApp(ui = ui, server = server)</code></pre>
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./estatico.html" class="pagination-link" aria-label="Estático">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Estático</span></span>
+      <a href="./shiny-app.html" class="pagination-link" aria-label="shinyapp">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">shinyapp</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./shiny-app2.html" class="pagination-link" aria-label="shinyapp más compleja">
-        <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">shinyapp más compleja</span></span> <i class="bi bi-arrow-right-short"></i>
-      </a>
   </div>
 </nav>
 </div> <!-- /content -->

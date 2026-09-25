@@ -11,12 +11,7 @@ book:
     - index.qmd
     - estatico.qmd
     - shiny-app.qmd
-
-format:
-  html:
-    theme:
-      - cosmo
-      - brand
+    - shiny-app2.qmd
 
 execute:
   cache: false
@@ -24,3 +19,24 @@ execute:
 
 filters:
   - shinylive
+
+format:
+  html:
+#   theme: 
+#     dark: [darkly, darkly-fix.scss]
+#     light: [flatly, flatly-fix.scss]
+#   highlight-style:
+#     dark: nord
+#     light: atom-one
+#   respect-user-color-scheme: true
+#   css: styles.css
+  # df-print: paged
+    toc: false
+  # toc-depth: 5
+  # number-sections: true
+  # toc-expand: true
+    grid:
+      sidebar-width: 300px
+      body-width: 1300px
+      margin-width: 200px
+      gutter-width: 1.05rem
