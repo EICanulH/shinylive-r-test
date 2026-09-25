@@ -28,5 +28,15 @@
     "crumbs": [
       "<span class='chapter-number'>2</span>  <span class='chapter-title'>Estático</span>"
     ]
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Shinylive test",
+    "section": "",
+    "text": "hola",
+    "crumbs": [
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Índice</span>"
+    ]
   }
 ]
