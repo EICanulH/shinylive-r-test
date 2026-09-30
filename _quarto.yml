@@ -12,6 +12,7 @@ book:
     - estatico.qmd
     - shiny-app.qmd
     - shiny-app2.qmd
+    - shiny-dashboard-accidentes.qmd
 
 execute:
   cache: false

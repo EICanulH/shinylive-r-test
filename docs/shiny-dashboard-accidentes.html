@@ -1,0 +1,1417 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.10.18">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>5&nbsp; Accidentes de tránsito en México – Shinylive test</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./shiny-app2.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-ed1dd126299ed36077d375b8a45118e7.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<meta name="shinylive:serviceworker_dir" content=".">
+<script src="site_libs/quarto-contrib/shinylive-0.10.12/shinylive/load-shinylive-sw.js" type="module"></script>
+<script src="site_libs/quarto-contrib/shinylive-0.10.12/shinylive/run-python-blocks.js" type="module"></script>
+<link href="site_libs/quarto-contrib/shinylive-0.10.12/shinylive/shinylive.css" rel="stylesheet">
+<link href="site_libs/quarto-contrib/shinylive-quarto-css/shinylive-quarto.css" rel="stylesheet">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+</head>
+
+<body class="nav-sidebar floating fullcontent quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./shiny-dashboard-accidentes.html"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Accidentes de tránsito en México</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">Shinylive test</a> 
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Índice</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./estatico.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Estático</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./shiny-app.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">shinyapp</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./shiny-app2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">shinyapp más compleja</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./shiny-dashboard-accidentes.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Accidentes de tránsito en México</span></span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Accidentes de tránsito en México</span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<pre class="shinylive-r" data-engine="r"><code>#| '!! shinylive warning !!': |
+#|   shinylive does not work in self-contained HTML documents.
+#|   Please set `embed-resources: false` in your metadata.
+#| standalone: true
+#| viewerHeight: 800
+
+# ------------------------------------------------------------------------------
+# Dashboard: Accidentes de tránsito en México, 2025
+#
+# Base: ATUS 2025 sin duplicados y solo accidentes causados por el conductor.
+# Antes de correr la app, correr una vez preparar_datos.R (genera los .rds).
+# Paquetes: install.packages(c("shiny", "bslib", "tidyverse", "scales", "plotly", "sf"))
+# ------------------------------------------------------------------------------
+
+library(shiny)
+library(bslib)
+library(tidyverse)
+library(scales)
+library(plotly)
+library(sf)
+
+datos &lt;- readRDS("datos_dashboard.rds")
+modelo &lt;- readRDS("modelo_dashboard.rds")
+mapa &lt;- read_sf("mexico_estados.geojson")
+
+# Colores y estilo ----------------------------------------------------------
+azul &lt;- "#2a78d6"
+naranja &lt;- "#eb6834"
+aqua &lt;- "#1baf7a"
+amarillo &lt;- "#eda100"
+rojo &lt;- "#e34948"
+gris &lt;- "#9e9d98"
+azules &lt;- c("#cde2fb", "#86b6ef", "#3987e5", "#1c5cab", "#0d366b")
+colores_grupo &lt;- c(`Contexto del incidente` = azul, Espacio = naranja, Tiempo = aqua, Conductor = amarillo)
+colores_objetivo &lt;- c(`Con víctimas` = naranja, `Sólo daños` = azul)
+
+tema &lt;- theme_minimal(base_size = 11) +
+  theme(panel.grid.minor = element_blank(), legend.position = "top")
+
+# Catálogos -----------------------------------------------------------------
+regiones &lt;- sort(unique(datos$REGION))
+entidades &lt;- sort(unique(datos$ENTIDAD))
+meses &lt;- c("Ene", "Feb", "Mar", "Abr", "May", "Jun", "Jul", "Ago", "Sep", "Oct", "Nov", "Dic")
+horas &lt;- paste0(0:23, " h")
+nombre_medida &lt;- c(SEVERO = "% con víctimas", FATAL = "% fatales")
+umbral &lt;- modelo$simulador$umbral
+
+vehiculos &lt;- c(AUTOMOVIL = "Automóvil", CAMPASAJ = "Camioneta de pasajeros", MICROBUS = "Microbús",
+               PASCAMION = "Camión urbano de pasajeros", OMNIBUS = "Ómnibus", TRANVIA = "Trolebús o tranvía",
+               CAMIONETA = "Camioneta de carga", CAMION = "Camión de carga", TRACTOR = "Tractor",
+               FERROCARRI = "Ferrocarril", MOTOCICLET = "Motocicleta", BICICLETA = "Bicicleta",
+               OTROVEHIC = "Otro vehículo")
+
+personas &lt;- tibble(persona = c("Conductor", "Pasajero", "Peatón", "Ciclista", "Otro"),
+                   muertos = c("CONDMUERTO", "PASAMUERTO", "PEATMUERTO", "CICLMUERTO", "OTROMUERTO"),
+                   heridos = c("CONDHERIDO", "PASAHERIDO", "PEATHERIDO", "CICLHERIDO", "OTROHERIDO"))
+
+# Funciones de apoyo ----------------------------------------------------------
+
+# Convierte un ggplot a gráfica interactiva
+a_plotly &lt;- function(p) {
+  ggplotly(p, tooltip = "text") %&gt;% config(displayModeBar = FALSE)
+}
+
+# Número de accidentes y severidad (% con víctimas o % fatales) por una o más variables
+resumen &lt;- function(d, ..., medida = "SEVERO") {
+  d %&gt;%
+    group_by(...) %&gt;%
+    summarise(accidentes = n(), tasa = mean(.data[[medida]]), .groups = "drop")
+}
+
+# Barras horizontales.
+# total: si se da, el texto muestra también el % del total.
+# linea: si se da, dibuja una línea vertical (el promedio).
+barras &lt;- function(tabla, categoria, valor, formato = comma, total = NULL, linea = NULL, ordenar = TRUE) {
+  tabla &lt;- tabla %&gt;%
+    mutate(cat = as.character({{ categoria }}),
+           val = {{ valor }},
+           texto = paste0(cat, ": ", formato(val)))
+  if (!is.null(total)) tabla$texto &lt;- paste0(tabla$texto, " (", percent(tabla$val / total, accuracy = 0.1), ")")
+  if ("accidentes" %in% names(tabla)) tabla$texto &lt;- paste0(tabla$texto, "&lt;br&gt;Accidentes: ", comma(tabla$accidentes))
+  tabla$cat &lt;- if (ordenar) fct_reorder(tabla$cat, tabla$val) else fct_rev(fct_inorder(tabla$cat))
+
+  p &lt;- ggplot(tabla, aes(x = val, y = cat, text = texto)) +
+    geom_col(fill = azul, width = 0.7) +
+    scale_x_continuous(labels = formato, breaks = breaks_extended(n = 3)) +
+    labs(x = NULL, y = NULL) +
+    tema
+  if (!is.null(linea)) {
+    df_linea &lt;- data.frame(
+      val_linea = linea, 
+      texto_linea = paste0("Promedio general: ", formato(linea))
+    )
+    p &lt;- p + geom_vline(
+      data = df_linea, 
+      aes(xintercept = val_linea, text = texto_linea), 
+      color = "grey40"
+    )
+  }
+  a_plotly(p)
+}
+
+# Mapa por entidad
+mapa_entidades &lt;- function(tabla, escala) {
+  p &lt;- mapa %&gt;%
+    left_join(tabla, by = c("NOMBRE" = "ENTIDAD")) %&gt;%
+    ggplot() +
+    geom_sf(aes(fill = val, text = texto), color = "white", linewidth = 0.2) +
+    escala +
+    theme_void()
+
+  a_plotly(p) %&gt;%
+    style(hoveron = "fills") %&gt;%
+    layout(xaxis = list(visible = FALSE), yaxis = list(visible = FALSE))
+}
+
+# Mapa de calor
+calor &lt;- function(tabla, x, y, valor, formato, nombre) {
+  tabla &lt;- tabla %&gt;%
+    mutate(val = {{ valor }},
+           texto = paste0({{ y }}, ", ", {{ x }}, "&lt;br&gt;", nombre, ": ", formato(val)))
+  if ("accidentes" %in% names(tabla)) tabla$texto &lt;- paste0(tabla$texto, "&lt;br&gt;Accidentes: ", comma(tabla$accidentes))
+
+  p &lt;- ggplot(tabla, aes(x = {{ x }}, y = {{ y }}, fill = val, text = texto)) +
+    geom_tile(color = "white", linewidth = 0.5) +
+    scale_fill_gradientn(colors = azules, labels = formato, name = nombre) +
+    labs(x = NULL, y = NULL) +
+    tema +
+    theme(panel.grid = element_blank())
+  a_plotly(p)
+}
+
+# Número de vehículos agrupado
+num_vehiculos &lt;- function(d) {
+  d %&gt;% mutate(numero = if_else(NUM_VEHICULOS &gt;= 4, "4 o más", as.character(NUM_VEHICULOS)))
+}
+
+# Variable objetivo con nombre
+con_objetivo &lt;- function(d) {
+  d %&gt;% mutate(objetivo = factor(if_else(SEVERO == 1, "Con víctimas", "Sólo daños"),
+                                 levels = c("Sólo daños", "Con víctimas")))
+}
+
+# Tarjeta con una gráfica
+tarjeta &lt;- function(titulo, id, nota = NULL, alto = "380px") {
+  card(full_screen = TRUE,
+       card_header(titulo),
+       plotlyOutput(id, height = alto),
+       if (!is.null(nota)) card_footer(nota))
+}
+
+nota_promedio &lt;- "La línea gris representa el porcentaje general de accidentes con el nivel de severidad seleccionado (con víctimas o fatales) para todos los datos seleccionados con los filtros de región y entidad."
+
+# ------------------------------------------------------------------------------
+# Interfaz
+# ------------------------------------------------------------------------------
+ui &lt;- page_navbar(
+  title = "Accidentes de tránsito en México, 2025",
+  id = "pagina",
+  fillable = FALSE,
+  theme = bs_theme(version = 5, primary = azul, secondary = "#5f5e5a", warning = naranja, danger = rojo),
+
+  sidebar = sidebar(
+    width = 270,
+    conditionalPanel(
+      "input.pagina == 'ocurre' || input.pagina == 'patrones'",
+      selectInput("region", "Región", c("Todas", regiones)),
+      selectInput("entidad", "Entidad", c("Todas", entidades)),
+      conditionalPanel(
+        "input.pagina == 'patrones'",
+        radioButtons("medida", "Nivel de severidad",
+                     c("% con víctimas (heridos o muertos)" = "SEVERO", "% fatales (muertos en el lugar)" = "FATAL"))
+      )
+    ),
+    helpText("Base de INEGI (ATUS 2025) sin registros duplicados y solo con accidentes causados por el conductor",
+             paste0("(", comma(nrow(datos)), " accidentes)."),
+             "Las personas muertas son las que fallecieron en el lugar del accidente."),
+    conditionalPanel(
+      "input.pagina == 'modelo' || input.pagina == 'conclusion'",
+      helpText("El modelo usa la misma base e incluye todos los tipos de accidente.",
+               paste0("Umbral de decisión: ", umbral, "."), "Los filtros no aplican aquí.")
+    )
+  ),
+
+  # ¿Qué ocurre? ---------------------------------------------------------------
+  nav_panel(
+    "¿Qué ocurre?", value = "ocurre",
+    layout_columns(
+      fill = FALSE,
+      value_box("Accidentes", textOutput("vb_accidentes"), theme = "primary"),
+      value_box("Con víctimas", textOutput("vb_victimas"), theme = "warning"),
+      value_box("Fatales", textOutput("vb_fatales"), theme = "danger"),
+      value_box("Personas muertas", textOutput("vb_muertos"), theme = "secondary"),
+      value_box("Personas heridas", textOutput("vb_heridos"), theme = "secondary")
+    ),
+    navset_card_underline(
+      nav_panel("Variable objetivo", layout_columns(
+        col_widths = c(4, 4, 4, 12),
+        card(card_header("¿Cuál es la variable objetivo?"),
+             p("Es lo que el modelo intenta predecir: si un accidente", strong("tuvo víctimas"), "o no."),
+             tags$ul(
+               tags$li(strong("Con víctimas (1):"), "al menos una persona herida o muerta",
+                       "(clase de accidente \"No fatal\" o \"Fatal\")."),
+               tags$li(strong("Sólo daños (0):"), "solo hubo daños materiales.")
+             ),
+             p(textOutput("o_objetivo_texto", inline = TRUE))),
+        tarjeta("Con víctimas vs. sólo daños", "o_objetivo_barras", alto = "260px"),
+        tarjeta("Clase de accidente", "o_objetivo_clase", alto = "260px"),
+        tarjeta("Accidentes por mes según la variable objetivo", "o_objetivo_mes")
+      )),
+      nav_panel("Contexto del incidente", layout_columns(
+        col_widths = c(12, 7, 5),
+        tarjeta("Accidentes por tipo, con y sin víctimas", "o_contexto_tipo"),
+        tarjeta("% con víctimas por tipo de accidente", "o_contexto_tasa", nota_promedio),
+        tarjeta("% con víctimas por capa de rodamiento", "o_contexto_capa", nota_promedio)
+      )),
+      nav_panel("Víctimas", layout_columns(
+        col_widths = c(12, 6, 6, 12),
+        tarjeta("¿Quiénes fueron las víctimas?", "o_victimas_persona"),
+        tarjeta("Personas muertas por mes", "o_victimas_muertos", alto = "300px"),
+        tarjeta("Personas heridas por mes", "o_victimas_heridos", alto = "300px"),
+        tarjeta("¿Quiénes mueren en cada tipo de accidente?", "o_victimas_quien",
+                "Solo tipos de accidente con al menos 20 personas muertas.")
+      ))
+    )
+  ),
+
+  # ¿Qué patrones encontramos? --------------------------------------------------
+  nav_panel(
+    "¿Qué patrones encontramos?", value = "patrones",
+    navset_card_underline(
+      nav_panel("Tiempo", layout_columns(
+        col_widths = c(12, 6, 6, 12),
+        tarjeta("Severidad por hora y día de la semana", "p_tiempo_calor"),
+        tarjeta("Severidad por tipo de día", "p_tiempo_dia", nota_promedio, alto = "250px"),
+        tarjeta("Severidad por franja horaria", "p_tiempo_franja", nota_promedio, alto = "250px"),
+        tarjeta("Personas muertas por cada 1,000 accidentes, por hora", "p_tiempo_muertos", nota_promedio)
+      )),
+      nav_panel("Espacio", layout_columns(
+        col_widths = c(7, 5, 12, 12),
+        tarjeta("Severidad por entidad frente al promedio nacional", "p_espacio_mapa",
+                "En rojo, arriba del promedio nacional; en azul, abajo."),
+        tarjeta("Severidad por región", "p_espacio_region", nota_promedio),
+        tarjeta("Severidad por región y tipo de zona", "p_espacio_calor"),
+        tarjeta("Severidad en los 10 municipios con más accidentes", "p_espacio_municipios", nota_promedio)
+      )),
+      nav_panel("Vehículos involucrados", layout_columns(
+        col_widths = c(7, 5),
+        tarjeta("Severidad cuando participa cada tipo de vehículo", "p_vehiculos_tipo",
+                "Un accidente cuenta en cada tipo de vehículo que participa. La línea gris es el promedio de la selección."),
+        tarjeta("Severidad por número de vehículos", "p_vehiculos_numero", nota_promedio)
+      )),
+      nav_panel("Conductor", layout_columns(
+        col_widths = c(12, 6, 6),
+        tarjeta("Severidad por sexo y edad del conductor", "p_conductor_edad",
+                paste("Sin los accidentes en que el conductor se fugó.", nota_promedio), alto = "250px"),
+        tarjeta("Severidad por sexo y presencia de aliento alcohólico", "p_conductor_aliento", nota_promedio, alto = "250px"),
+        tarjeta("Severidad por sexo y uso de cinturón de seguridad", "p_conductor_cinturon", nota_promedio, alto = "250px")
+      ))
+    )
+  ),
+
+  # ¿Qué aporta el modelo? -------------------------------------------------------
+  nav_panel(
+    "¿Qué aporta el modelo?", value = "modelo",
+    layout_columns(
+      fill = FALSE,
+      value_box("Recall", percent(modelo$resultado$recall, accuracy = 0.1),
+                "De los accidentes con víctimas, cuántos detecta", theme = "primary"),
+      value_box("Precisión", percent(modelo$resultado$precision, accuracy = 0.1),
+                "De los que marca con víctimas, cuántos sí tienen", theme = "primary"),
+      value_box("Especificidad", percent(modelo$resultado$especificidad, accuracy = 0.1),
+                "De los de sólo daños, cuántos identifica bien", theme = "primary"),
+      value_box("AUC", round(modelo$resultado$AUC, 3),
+                "0.5 = azar, 1 = perfecto", theme = "primary")
+    ),
+    layout_columns(
+      col_widths = c(5, 7, 7, 5, 12),
+      tarjeta("Matriz de confusión (conjunto de prueba)", "m_confusion",
+              paste0("Con umbral de ", umbral, ": si la probabilidad es ", umbral,
+                     " o más, el modelo dice \"con víctimas\". ", comma(modelo$n_test), " accidentes de prueba.")),
+      tarjeta("¿Qué pasa con otros umbrales?", "m_umbrales",
+              paste0("Subir el umbral mejora la precisión pero baja el recall. Con ", umbral,
+                     " el modelo detecta 7 de cada 10 accidentes con víctimas.")),
+      card(full_screen = TRUE,
+           card_header("Factores asociados a accidentes con víctimas (razón de momios)"),
+           checkboxGroupInput("m_grupos", NULL, names(colores_grupo), selected = names(colores_grupo), inline = TRUE),
+           plotlyOutput("m_or", height = "600px"),
+           card_footer("Cada punto se compara con la categoría de referencia de su variable. Mayor a 1: más probabilidad",
+                       "de víctimas; menor a 1: menos. La línea es el intervalo de confianza al 95%. Escala logarítmica.",
+                       "No se muestran atropellamientos ni caídas de pasajero: el 100% tiene víctimas, así que su",
+                       "razón de momios no se puede estimar (es infinita).")),
+      tarjeta("¿Qué variables pesan más?", "m_importancia",
+              paste("Cuánto empeora el ajuste del modelo si se quita cada variable (prueba de razón de verosimilitudes).",
+                    "El tipo de accidente pesa más de 20 veces que la región, la segunda más importante.")),
+      card(card_header("Simulador: probabilidad de que un accidente tenga víctimas"),
+           layout_columns(
+             col_widths = c(8, 4),
+             uiOutput("s_controles"),
+             value_box("Probabilidad estimada", textOutput("s_prob"),
+                       textOutput("s_comparacion"), textOutput("s_clase"), theme = "warning")
+           ))
+    )
+  ),
+
+  # Conclusión -------------------------------------------------------------------
+  nav_panel(
+    "Conclusión", value = "conclusion",
+    layout_columns(
+      col_widths = c(12, 4, 4, 4, 4, 4, 4),
+      card(card_header("Conclusión principal"),
+           p("Lo que más se relaciona con que un accidente tenga víctimas es el", strong("tipo de accidente."),
+             "Los atropellamientos y las caídas de pasajero siempre tienen víctimas. Entre los demás, aun comparando",
+             "accidentes en la misma región, zona y horario, y con conductores parecidos, un choque con ciclista tiene",
+             "17.8 veces los momios de tener víctimas de un choque entre vehículos, una volcadura 10.6 veces y un choque",
+             "con motocicleta 8.4 veces."),
+           p("Después siguen", strong("el lugar"), "(en zona suburbana los momios casi se duplican y en el Noreste y el Centro",
+             "son la mitad que en el Noroeste) y", strong("el conductor"), "(con aliento alcohólico 1.7 veces y de 12 a 17 años",
+             "1.5 veces).", strong("El momento"), "del accidente (madrugada, noche, domingo o día festivo) también",
+             "aumenta el riesgo, pero poco: entre 1.1 y 1.2 veces."),
+           p("Con un umbral de 0.2, el modelo detecta 71% de los accidentes con víctimas y, de los que marca con víctimas,",
+             "46% sí las tuvieron (AUC de 0.83). Las acciones para reducir víctimas deberían enfocarse en peatones,",
+             "motociclistas y ciclistas, en carreteras y caminos suburbanos y en el control de alcohol.")),
+      card(card_header("Tiempo"),
+           p("En la madrugada hay 20.3 personas muertas por cada 1,000 accidentes, más del doble que en la tarde (7.6).",
+             "Los domingos de 17 a 21 h, 24% de los accidentes tienen víctimas; en días festivos, 21%, contra 16.9% entre semana."),
+           p(em("Modelo:"), "domingo 1.17, día festivo 1.24, madrugada 1.13 y noche 1.11 veces los momios.")),
+      card(card_header("Espacio"),
+           p("El Sureste (26.5%) y el Occidente (23.7%) tienen la mayor proporción de accidentes con víctimas y el Noreste",
+             "(10.3%) la menor. En carreteras estatales y caminos rurales casi 5% de los accidentes son fatales,",
+             "casi ocho veces más que en una intersección urbana (0.6%)."),
+           p(em("Modelo:"), "zona suburbana 1.95 veces. El Sureste queda igual que el Noroeste (1.00): su porcentaje alto",
+             "se explica por el tipo de accidentes que tiene, como los choques de motocicleta.")),
+      card(card_header("Contexto del incidente"),
+           p("Los atropellamientos y las caídas de pasajero siempre tienen víctimas. Les siguen los choques con ciclista (54%),",
+             "las volcaduras (48%) y los choques con motocicleta (38%). El choque entre vehículos, el más común",
+             "(60% de los accidentes), solo 6%."),
+           p(em("Modelo:"), "es la variable que más pesa, muy por encima de las demás.")),
+      card(card_header("Vehículos involucrados"),
+           p("Cuando participa una bicicleta, 53% de los accidentes tienen víctimas, y cuando participa una motocicleta, 43%.",
+             "Los accidentes con ferrocarril son los más letales: 7% son fatales."),
+           p(em("Modelo:"), "los vehículos entran a través del tipo de accidente (choque con motocicleta 8.4 y con ciclista 17.8).")),
+      card(card_header("Conductor"),
+           p("Con conductores de 12 a 17 años, 38% de los accidentes tienen víctimas. Con aliento alcohólico es 26% contra",
+             "16% sin él, y sin cinturón 25% contra 14% con cinturón."),
+           p(em("Modelo:"), "aliento alcohólico 1.69 y de 12 a 17 años 1.52 veces. El sexo casi no influye (mujer 1.08).")),
+      card(card_header("Víctimas"),
+           p("En 2025 se registraron 4,125 personas muertas y 80,880 heridas en accidentes causados por el conductor.",
+             "De los muertos, 61% eran conductores, 22% pasajeros y 14% peatones."),
+           p(em("Modelo:"), "predice si un accidente tiene víctimas, no cuántas."))
+    )
+  )
+)
+
+# ------------------------------------------------------------------------------
+# Servidor
+# ------------------------------------------------------------------------------
+server &lt;- function(input, output, session) {
+
+  # Filtros ----------------------------------------------------------------------
+  observeEvent(input$region, {
+    opciones &lt;- if (input$region == "Todas") entidades else sort(unique(datos$ENTIDAD[datos$REGION == input$region]))
+    updateSelectInput(session, "entidad", choices = c("Todas", opciones))
+  })
+
+  d &lt;- reactive({
+    x &lt;- datos
+    if (input$region != "Todas") x &lt;- filter(x, REGION == input$region)
+    if (input$entidad != "Todas") x &lt;- filter(x, ENTIDAD == input$entidad)
+    req(nrow(x) &gt; 0)
+    x
+  })
+
+  medida &lt;- reactive(input$medida)
+  promedio &lt;- reactive(mean(d()[[medida()]]))
+  promedio_victimas &lt;- reactive(mean(d()$SEVERO))
+
+  # ¿Qué ocurre? -------------------------------------------------------------------
+  output$vb_accidentes &lt;- renderText(comma(nrow(d())))
+  output$vb_victimas &lt;- renderText(percent(mean(d()$SEVERO), accuracy = 0.1))
+  output$vb_fatales &lt;- renderText(percent(mean(d()$FATAL), accuracy = 0.1))
+  output$vb_muertos &lt;- renderText(comma(sum(d()$MUERTOS)))
+  output$vb_heridos &lt;- renderText(comma(sum(d()$HERIDOS)))
+
+  # Variable objetivo
+  output$o_objetivo_texto &lt;- renderText({
+    paste0("En la selección, ", round(100 * mean(d()$SEVERO)), " de cada 100 accidentes tuvieron víctimas (",
+           comma(sum(d()$SEVERO)), " de ", comma(nrow(d())), ").")
+  })
+
+  output$o_objetivo_barras &lt;- renderPlotly({
+    d() %&gt;% con_objetivo() %&gt;% count(objetivo) %&gt;% barras(objetivo, n, total = nrow(d()))
+  })
+
+  output$o_objetivo_clase &lt;- renderPlotly({
+    d() %&gt;%
+      count(CLASACC) %&gt;%
+      mutate(CLASACC = factor(CLASACC, levels = c("Sólo daños", "No fatal", "Fatal"))) %&gt;%
+      arrange(CLASACC) %&gt;%
+      barras(CLASACC, n, total = nrow(d()), ordenar = FALSE)
+  })
+
+  output$o_objetivo_mes &lt;- renderPlotly({
+    x &lt;- d() %&gt;%
+      con_objetivo() %&gt;%
+      count(MES, objetivo) %&gt;%
+      group_by(MES) %&gt;%
+      mutate(prop = n / sum(n)) %&gt;%
+      ungroup() %&gt;%
+      mutate(texto = paste0(meses[MES], " - ", objetivo, "&lt;br&gt;Accidentes: ", comma(n), " (", percent(prop, accuracy = 0.1), ")"))
+    p &lt;- ggplot(x, aes(x = MES, y = n, fill = objetivo, text = texto)) +
+      geom_col(width = 0.7) +
+      scale_fill_manual(values = colores_objetivo) +
+      scale_x_continuous(breaks = 1:12, labels = meses) +
+      scale_y_continuous(labels = comma) +
+      labs(x = NULL, y = "Accidentes", fill = NULL) +
+      tema
+    a_plotly(p)
+  })
+
+  # Contexto del incidente
+  output$o_contexto_tipo &lt;- renderPlotly({
+    x &lt;- d() %&gt;%
+      con_objetivo() %&gt;%
+      count(TIPACCID, objetivo) %&gt;%
+      group_by(TIPACCID) %&gt;%
+      mutate(total = sum(n), prop = n / total) %&gt;%
+      ungroup() %&gt;%
+      mutate(texto = paste0(TIPACCID, "&lt;br&gt;", objetivo, ": ", comma(n), " (", percent(prop, accuracy = 0.1), " del tipo)"))
+    p &lt;- ggplot(x, aes(x = n, y = fct_reorder(TIPACCID, total), fill = objetivo, text = texto)) +
+      geom_col(width = 0.7) +
+      scale_fill_manual(values = colores_objetivo) +
+      scale_x_continuous(labels = comma) +
+      labs(x = "Accidentes", y = NULL, fill = NULL) +
+      tema
+    a_plotly(p)
+  })
+
+  output$o_contexto_tasa &lt;- renderPlotly({
+    resumen(d(), TIPACCID) %&gt;% barras(TIPACCID, tasa, percent, linea = promedio_victimas())
+  })
+
+  output$o_contexto_capa &lt;- renderPlotly({
+    resumen(d(), CAPAROD) %&gt;% barras(CAPAROD, tasa, percent, linea = promedio_victimas())
+  })
+
+  # Víctimas
+  output$o_victimas_persona &lt;- renderPlotly({
+    x &lt;- personas %&gt;%
+      mutate(`Personas muertas` = map_dbl(muertos, ~ sum(d()[[.x]])),
+             `Personas heridas` = map_dbl(heridos, ~ sum(d()[[.x]]))) %&gt;%
+      select(persona, `Personas muertas`, `Personas heridas`) %&gt;%
+      pivot_longer(-persona, names_to = "tipo", values_to = "n") %&gt;%
+      group_by(tipo) %&gt;%
+      mutate(prop = n / sum(n)) %&gt;%
+      ungroup() %&gt;%
+      mutate(persona = factor(persona, levels = personas$persona),
+             texto = paste0(persona, "&lt;br&gt;", 
+                            tipo, ": ", comma(n), "&lt;br&gt;", 
+                            percent(prop, accuracy = 0.1), " del total de ", tolower(tipo)))
+    p &lt;- ggplot(x, aes(x = persona, y = prop, fill = tipo, text = texto)) +
+      geom_col(position = "dodge", width = 0.7) +
+      scale_fill_manual(values = c(`Personas muertas` = rojo, `Personas heridas` = azul)) +
+      scale_y_continuous(labels = percent) +
+      labs(x = NULL, y = "% del total", fill = NULL) +
+      tema
+    a_plotly(p)
+  })
+
+  por_mes &lt;- function(columna) {
+    x &lt;- d() %&gt;%
+      group_by(MES) %&gt;%
+      summarise(personas = sum(.data[[columna]])) %&gt;%
+      mutate(texto = paste0(meses[MES], ": ", comma(personas)))
+    p &lt;- ggplot(x, aes(x = MES, y = personas)) +
+      geom_line(color = azul) +
+      geom_point(aes(text = texto), color = azul, size = 2) +
+      scale_x_continuous(breaks = 1:12, labels = meses) +
+      scale_y_continuous(labels = comma) +
+      labs(x = NULL, y = NULL) +
+      tema
+    a_plotly(p)
+  }
+
+  output$o_victimas_muertos &lt;- renderPlotly(por_mes("MUERTOS"))
+  output$o_victimas_heridos &lt;- renderPlotly(por_mes("HERIDOS"))
+
+  output$o_victimas_quien &lt;- renderPlotly({
+    x &lt;- d() %&gt;%
+      group_by(TIPACCID) %&gt;%
+      summarise(across(all_of(personas$muertos), sum)) %&gt;%
+      pivot_longer(-TIPACCID, names_to = "columna", values_to = "muertos") %&gt;%
+      left_join(personas %&gt;% select(persona, columna = muertos), by = "columna") %&gt;%
+      group_by(TIPACCID) %&gt;%
+      mutate(total = sum(muertos), prop = muertos / total) %&gt;%
+      ungroup() %&gt;%
+      filter(total &gt;= 20) %&gt;%
+      mutate(persona = factor(persona, levels = personas$persona),
+             texto = paste0(TIPACCID, "&lt;br&gt;", persona, ": ", comma(muertos), " (", percent(prop, accuracy = 1), ")"))
+    req(nrow(x) &gt; 0)
+    p &lt;- ggplot(x, aes(x = prop, y = fct_reorder(TIPACCID, total), fill = persona, text = texto)) +
+      geom_col(width = 0.7, position = position_stack(reverse = TRUE)) +
+      scale_fill_manual(values = c(azul, naranja, aqua, amarillo, gris)) +
+      scale_x_continuous(labels = percent) +
+      labs(x = "% de las personas muertas", y = NULL, fill = NULL) +
+      tema
+    a_plotly(p)
+  })
+
+  # ¿Qué patrones encontramos? --------------------------------------------------------
+
+  # Tiempo
+  output$p_tiempo_calor &lt;- renderPlotly({
+    resumen(d(), DIASEMANA, ID_HORA, medida = medida()) %&gt;%
+      mutate(DIASEMANA = fct_rev(DIASEMANA), HORA = factor(paste0(ID_HORA, " h"), levels = horas)) %&gt;%
+      calor(HORA, DIASEMANA, tasa, \(x) percent(x, accuracy = 0.01), nombre_medida[[medida()]])
+  })
+
+  output$p_tiempo_dia &lt;- renderPlotly({
+    resumen(d(), TIPO_DIA, medida = medida()) %&gt;%
+      barras(TIPO_DIA, tasa, percent, linea = promedio())
+  })
+
+  output$p_tiempo_franja &lt;- renderPlotly({
+    resumen(d(), FRANJA_HORARIA, medida = medida()) %&gt;%
+      mutate(FRANJA_HORARIA = factor(FRANJA_HORARIA, levels = c("Madrugada", "Mañana", "Tarde", "Noche"))) %&gt;%
+      arrange(FRANJA_HORARIA) %&gt;%
+      barras(FRANJA_HORARIA, tasa, percent, linea = promedio(), ordenar = FALSE)
+  })
+
+  output$p_tiempo_muertos &lt;- renderPlotly({
+    x &lt;- d() %&gt;%
+      group_by(ID_HORA) %&gt;%
+      summarise(tasa = 1000 * sum(MUERTOS) / n()) %&gt;%
+      mutate(texto = paste0(ID_HORA, " h&lt;br&gt;Muertos por cada 1,000 accidentes: ", round(tasa, 1)))
+    p &lt;- ggplot(x, aes(x = ID_HORA, y = tasa)) +
+      geom_hline(yintercept = 1000 * sum(d()$MUERTOS) / nrow(d()), color = "grey40") +
+      geom_line(color = azul) +
+      geom_point(aes(text = texto), color = azul, size = 2) +
+      scale_x_continuous(breaks = seq(0, 21, 3), labels = paste0(seq(0, 21, 3), " h")) +
+      labs(x = "Hora del día", y = "Muertos por cada 1,000 accidentes") +
+      tema
+    a_plotly(p)
+  })
+
+  # Espacio
+  output$p_espacio_mapa &lt;- renderPlotly({
+    nacional &lt;- mean(datos[[medida()]])
+    tabla &lt;- resumen(d(), ENTIDAD, medida = medida()) %&gt;%
+      mutate(val = tasa,
+             texto = paste0(ENTIDAD, "&lt;br&gt;", nombre_medida[[medida()]], ": ", percent(val, accuracy = 0.1),
+                            "&lt;br&gt;Accidentes: ", comma(accidentes)))
+    mapa_entidades(tabla, scale_fill_gradient2(low = azul, mid = "#f0efec", high = rojo, midpoint = nacional,
+                                               labels = percent, name = nombre_medida[[medida()]],
+                                               na.value = "grey92"))
+  })
+
+  output$p_espacio_region &lt;- renderPlotly({
+    resumen(d(), REGION, medida = medida()) %&gt;%
+      barras(REGION, tasa, percent, linea = promedio())
+  })
+
+  output$p_espacio_calor &lt;- renderPlotly({
+    resumen(d(), REGION, ZONA_DETALLE, medida = medida()) %&gt;%
+      mutate(ZONA_DETALLE = factor(ZONA_DETALLE, levels = c("Urbana: intersección", "Urbana: no intersección",
+                                                            "Suburbana: carretera estatal", "Suburbana: otro camino",
+                                                            "Suburbana: camino rural"))) %&gt;%
+      calor(ZONA_DETALLE, REGION, tasa, percent, nombre_medida[[medida()]])
+  })
+
+  output$p_espacio_municipios &lt;- renderPlotly({
+    d() %&gt;%
+      mutate(municipio = paste0(NOM_MUNICIPIO, ", ", ENTIDAD)) %&gt;%
+      resumen(municipio, medida = medida()) %&gt;%
+      slice_max(accidentes, n = 10) %&gt;%
+      barras(municipio, tasa, percent, linea = promedio())
+  })
+
+  # Vehículos involucrados
+  output$p_vehiculos_tipo &lt;- renderPlotly({
+    tibble(vehiculo = vehiculos,
+           accidentes = map_int(names(vehiculos), ~ sum(d()[[.x]] &gt; 0)),
+           tasa = map_dbl(names(vehiculos), ~ mean(d()[[medida()]][d()[[.x]] &gt; 0]))) %&gt;%
+      filter(accidentes &gt; 0) %&gt;%
+      barras(vehiculo, tasa, percent, linea = promedio())
+  })
+
+  output$p_vehiculos_numero &lt;- renderPlotly({
+    d() %&gt;%
+      num_vehiculos() %&gt;%
+      resumen(numero, medida = medida()) %&gt;%
+      barras(numero, tasa, percent, linea = promedio(), ordenar = FALSE)
+  })
+
+  # Conductor
+  output$p_conductor_edad &lt;- renderPlotly({
+    x &lt;- d() %&gt;%
+      filter(SEXO != "Se fugó") %&gt;%
+      resumen(GRUPO_EDAD, SEXO, medida = medida()) %&gt;%
+      mutate(
+        accion = if_else(medida() == "SEVERO", "tuvieron víctimas", "fueron fatales"),
+        texto = paste0(
+          "&lt;b&gt;", SEXO, " (", GRUPO_EDAD, " años)&lt;/b&gt;&lt;br&gt;",
+          "Total de accidentes: ", comma(accidentes), "&lt;br&gt;",
+          "De estos, el &lt;b&gt;", percent(tasa, accuracy = 0.1), "&lt;/b&gt; ", accion
+        )
+      )
+    
+    # Creamos un data frame auxiliar para el tooltip de la línea gris
+    df_prom &lt;- data.frame(
+      prom = promedio(), 
+      texto_prom = paste0("Promedio general: ", percent(promedio(), accuracy = 1))
+    )
+    
+    p &lt;- ggplot(x, aes(x = GRUPO_EDAD, y = tasa, fill = SEXO, text = texto)) +
+      geom_col(position = "dodge", width = 0.7) +
+      # Modificamos el geom_hline para incluir el tooltip
+      geom_hline(
+        data = df_prom, 
+        aes(yintercept = prom, text = texto_prom), 
+        color = "grey40"
+      ) +
+      scale_fill_manual(values = c(Hombre = azul, Mujer = naranja)) +
+      scale_y_continuous(labels = percent) +
+      labs(x = NULL, y = nombre_medida[[medida()]], fill = NULL) +
+      tema
+    
+    a_plotly(p)
+  })
+  
+  # output$p_conductor_sexo &lt;- renderPlotly({
+  #   resumen(d(), SEXO, medida = medida()) %&gt;%
+  #     barras(SEXO, tasa, percent, linea = promedio())
+  # })
+  # 
+  # output$p_conductor_aliento &lt;- renderPlotly({
+  #   resumen(d(), ALIENTO, medida = medida()) %&gt;%
+  #     barras(ALIENTO, tasa, percent, linea = promedio())
+  # })
+  # 
+  # output$p_conductor_cinturon &lt;- renderPlotly({
+  #   resumen(d(), CINTURON, medida = medida()) %&gt;%
+  #     barras(CINTURON, tasa, percent, linea = promedio())
+  # })
+
+  output$p_conductor_aliento &lt;- renderPlotly({
+    x &lt;- d() %&gt;%
+      filter(SEXO != "Se fugó") %&gt;%
+      resumen(ALIENTO, SEXO, medida = medida()) %&gt;%
+      mutate(
+        accion = if_else(medida() == "SEVERO", "tuvieron víctimas", "fueron fatales"),
+        texto = paste0(
+          "&lt;b&gt;", SEXO, " (Aliento: ", ALIENTO, ")&lt;/b&gt;&lt;br&gt;",
+          "Total de accidentes: ", comma(accidentes), "&lt;br&gt;",
+          "De estos, el &lt;b&gt;", percent(tasa, accuracy = 0.1), "&lt;/b&gt; ", accion
+        )
+      )
+    
+    df_prom &lt;- data.frame(
+      prom = promedio(), 
+      texto_prom = paste0("Promedio general: ", percent(promedio(), accuracy = 1))
+    )
+    
+    p &lt;- ggplot(x, aes(x = ALIENTO, y = tasa, fill = SEXO, text = texto)) +
+      geom_col(position = "dodge", width = 0.7) +
+      geom_hline(
+        data = df_prom, 
+        aes(yintercept = prom, text = texto_prom), 
+        color = "grey40"
+      ) +
+      scale_fill_manual(values = c(Hombre = azul, Mujer = naranja)) +
+      scale_y_continuous(labels = percent) +
+      labs(x = NULL, y = nombre_medida[[medida()]], fill = NULL) +
+      tema
+    
+    a_plotly(p)
+  })
+  
+  output$p_conductor_cinturon &lt;- renderPlotly({
+    x &lt;- d() %&gt;%
+      filter(SEXO != "Se fugó") %&gt;%
+      resumen(CINTURON, SEXO, medida = medida()) %&gt;%
+      mutate(
+        accion = if_else(medida() == "SEVERO", "tuvieron víctimas", "fueron fatales"),
+        texto = paste0(
+          "&lt;b&gt;", SEXO, " (Cinturón: ", CINTURON, ")&lt;/b&gt;&lt;br&gt;",
+          "Total de accidentes: ", comma(accidentes), "&lt;br&gt;",
+          "De estos, el &lt;b&gt;", percent(tasa, accuracy = 0.1), "&lt;/b&gt; ", accion
+        )
+      )
+    
+    df_prom &lt;- data.frame(
+      prom = promedio(), 
+      texto_prom = paste0("Promedio general: ", percent(promedio(), accuracy = 1))
+    )
+    
+    p &lt;- ggplot(x, aes(x = CINTURON, y = tasa, fill = SEXO, text = texto)) +
+      geom_col(position = "dodge", width = 0.7) +
+      geom_hline(
+        data = df_prom, 
+        aes(yintercept = prom, text = texto_prom), 
+        color = "grey40"
+      ) +
+      scale_fill_manual(values = c(Hombre = azul, Mujer = naranja)) +
+      scale_y_continuous(labels = percent) +
+      labs(x = NULL, y = nombre_medida[[medida()]], fill = NULL) +
+      tema
+    
+    a_plotly(p)
+  })
+  
+  # ¿Qué aporta el modelo? -------------------------------------------------------------
+  output$m_confusion &lt;- renderPlotly({
+    r &lt;- modelo$resultado
+    x &lt;- tibble(real = c("Con víctimas", "Con víctimas", "Sólo daños", "Sólo daños"),
+                predicho = c("Con víctimas", "Sólo daños", "Con víctimas", "Sólo daños"),
+                n = c(r$VP, r$FN, r$FP, r$VN),
+                nombre = c("Verdaderos positivos", "Falsos negativos", "Falsos positivos", "Verdaderos negativos")) %&gt;%
+      group_by(real) %&gt;%
+      mutate(prop = n / sum(n)) %&gt;%
+      ungroup() %&gt;%
+      mutate(acierto = if_else(real == predicho, "Acierto", "Error"),
+             etiqueta = paste0(comma(n), "\n(", percent(prop, accuracy = 0.1), ")"),
+             texto = paste0(nombre, "&lt;br&gt;Real: ", real, "&lt;br&gt;Predicho: ", predicho, "&lt;br&gt;", comma(n),
+                            " (", percent(prop, accuracy = 0.1), " de los reales)"))
+    p &lt;- ggplot(x, aes(x = predicho, y = fct_rev(real), fill = acierto, text = texto)) +
+      geom_tile(color = "white", linewidth = 2) +
+      geom_text(aes(label = etiqueta), size = 4.5) +
+      scale_fill_manual(values = c(Acierto = "#cde2fb", Error = "#fbd9cc")) +
+      labs(x = "Predicho por el modelo", y = "Real", fill = NULL) +
+      tema +
+      theme(panel.grid = element_blank(), legend.position = "none")
+    a_plotly(p)
+  })
+
+  output$m_umbrales &lt;- renderPlotly({
+    x &lt;- modelo$umbrales %&gt;%
+      select(umbral, Recall = recall, `Precisión` = precision, Especificidad = especificidad) %&gt;%
+      pivot_longer(-umbral, names_to = "metrica", values_to = "valor") %&gt;%
+      mutate(texto = paste0("Umbral ", umbral, "&lt;br&gt;", metrica, ": ", percent(valor, accuracy = 0.1)))
+    p &lt;- ggplot(x, aes(x = umbral, y = valor, color = metrica)) +
+      geom_vline(xintercept = umbral, color = "grey40", linetype = "dashed") +
+      geom_line() +
+      geom_point(aes(text = texto), size = 0.8) +
+      scale_color_manual(values = c(Recall = azul, `Precisión` = naranja, Especificidad = aqua)) +
+      scale_y_continuous(labels = percent, limits = c(0, 1)) +
+      labs(x = "Umbral de decisión", y = NULL, color = NULL) +
+      tema
+    a_plotly(p)
+  })
+
+  output$m_or &lt;- renderPlotly({
+    x &lt;- modelo$ors %&gt;%
+      filter(!separacion, grupo %in% input$m_grupos) %&gt;%
+      mutate(texto = paste0(etiqueta, "&lt;br&gt;Razón de momios: ", round(OR, 2),
+                            "&lt;br&gt;IC 95%: ", round(li, 2), " a ", round(ls, 2)))
+    req(nrow(x) &gt; 0)
+    p &lt;- ggplot(x, aes(x = OR, y = fct_reorder(etiqueta, OR), color = grupo)) +
+      geom_vline(xintercept = 1, color = "grey50") +
+      geom_segment(aes(x = li, xend = ls, yend = fct_reorder(etiqueta, OR))) +
+      geom_point(aes(text = texto), size = 2) +
+      scale_x_log10(breaks = c(0.5, 1, 2, 5, 10, 20)) +
+      scale_color_manual(values = colores_grupo) +
+      labs(x = "Razón de momios", y = NULL, color = NULL) +
+      tema
+    a_plotly(p)
+  })
+
+  output$m_importancia &lt;- renderPlotly({
+    x &lt;- modelo$importancia %&gt;%
+      mutate(texto = paste0(variable, " (", grupo, ")&lt;br&gt;Razón de verosimilitudes: ", comma(LRT, accuracy = 1)))
+    p &lt;- ggplot(x, aes(x = LRT, y = fct_reorder(variable, LRT), fill = grupo, text = texto)) +
+      geom_col(width = 0.7) +
+      scale_fill_manual(values = colores_grupo) +
+      scale_x_continuous(labels = comma) +
+      labs(x = NULL, y = NULL, fill = NULL) +
+      tema
+    a_plotly(p)
+  })
+
+  # Simulador
+  sim &lt;- modelo$simulador
+  etiquetas_sim &lt;- c(TIPO = "Tipo de accidente", REGION = "Región", ZONA = "Zona", FRANJA_HORARIA = "Horario",
+                     DIASEMANA = "Día de la semana", FESTIVO = "Día festivo", SEXO = "Sexo del conductor",
+                     GRUPO_EDAD = "Edad del conductor", ALIENTO = "Aliento alcohólico")
+
+  output$s_controles &lt;- renderUI({
+    controles &lt;- map(names(etiquetas_sim), function(v) {
+      opciones &lt;- setdiff(sim$niveles[[v]], "Se fugó")
+      selectInput(paste0("s_", v), etiquetas_sim[[v]], opciones)
+    })
+    layout_columns(col_widths = c(4, 4, 4), !!!controles)
+  })
+
+  prob_sim &lt;- reactive({
+    valores &lt;- map(names(etiquetas_sim), ~ input[[paste0("s_", .x)]])
+    req(all(!map_lgl(valores, is.null)))
+    nuevo &lt;- as.data.frame(set_names(valores, names(etiquetas_sim)))
+    X &lt;- model.matrix(sim$terminos, nuevo, xlev = sim$niveles)
+    b &lt;- sim$coeficientes
+    b[is.na(b)] &lt;- 0
+    plogis(sum(X[1, ] * b[colnames(X)]))
+  })
+
+  output$s_prob &lt;- renderText(percent(prob_sim(), accuracy = 0.1))
+  output$s_comparacion &lt;- renderText(
+    paste0(round(prob_sim() / sim$promedio, 1), " veces el promedio (", percent(sim$promedio, accuracy = 0.1), ")")
+  )
+  output$s_clase &lt;- renderText(
+    paste0("Con umbral de ", sim$umbral, ", el modelo lo clasifica como: ",
+           if_else(prob_sim() &gt;= sim$umbral, "con víctimas", "sólo daños"))
+  )
+}
+
+shinyApp(ui, server)
+
+# Cambios
+# output$o_victimas_persona (cambiar tooltip para que porcentaje quede claro)
+# output$p_tiempo_calor: percent --&gt; \(x) percent(x, accuracy = 0.01)
+# output$p_conductor_edad: Mejorar tooltip
+# Antes de la última línea de la función barras(). Agregar tooltip a línea promedio y modificarla  un poco</code></pre>
+
+
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./shiny-app2.html" class="pagination-link" aria-label="shinyapp más compleja">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">shinyapp más compleja</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+
+</body></html>
